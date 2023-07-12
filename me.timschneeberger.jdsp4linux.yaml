@@ -86,7 +86,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Audio4Linux/JDSP4Linux
-        commit: d0e71ab8551211369f296cf1350c990526e7e6a9
+        commit: b98faba3b4e006641106a254f073cd24b62305b5
         x-checker-data:
             type: json
             url: https://api.github.com/repos/Audio4Linux/JDSP4Linux/tags
