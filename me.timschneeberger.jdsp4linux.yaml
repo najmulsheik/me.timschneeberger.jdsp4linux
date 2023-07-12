@@ -1,6 +1,6 @@
 app-id: me.timschneeberger.jdsp4linux
 runtime: org.kde.Platform
-runtime-version: '5.15-22.08'
+runtime-version: 5.15-22.08
 sdk: org.kde.Sdk
 command: jamesdsp
 finish-args:
@@ -13,11 +13,11 @@ finish-args:
   - --talk-name=org.kde.StatusNotifierWatcher
   - --talk-name=org.freedesktop.portal.Background
 cleanup:
-  - "*.a"
-  - "*.la"
-  - "*.h"
-  - "*.m4"
-  - "*.pm"
+  - '*.a'
+  - '*.la'
+  - '*.h'
+  - '*.m4'
+  - '*.pm'
   - /include
   - /lib/pkgconfig
   - /share/pkgconfig
@@ -26,7 +26,7 @@ modules:
     config-opts:
       - --disable-documentation
     cleanup:
-      - "*"
+      - '*'
     sources:
       - type: archive
         url: https://download.gnome.org/sources/mm-common/1.0/mm-common-1.0.5.tar.xz
@@ -68,14 +68,14 @@ modules:
     sources:
       - type: git
         url: https://github.com/flatpak/libportal.git
-        tag: "0.6"
+        tag: '0.6'
         commit: 13df0b887a7eb7b0f9b14069561a41f62e813155
         x-checker-data:
-            type: json
-            url: https://api.github.com/repos/flatpak/libportal/releases/latest
-            tag-query: .tag_name
-            version-query: "$tag | sub(\"^jq-\"; \"\")"
-            timestamp-query: .published_at
+          type: json
+          url: https://api.github.com/repos/flatpak/libportal/releases/latest
+          tag-query: .tag_name
+          version-query: $tag | sub("^jq-"; "")
+          timestamp-query: .published_at
 
   - name: jamesdsp
     buildsystem: qmake
@@ -86,13 +86,13 @@ modules:
     sources:
       - type: git
         url: https://github.com/Audio4Linux/JDSP4Linux
-        tag: "2.5.1"
-        commit: 8352d5117d66fb3d146c7610ee430e9af5386854
+        tag: 2.6.0
+        commit: 7868e4389a3ba97019d50d7d316507f2b131720e
         x-checker-data:
-            type: json
-            url: https://api.github.com/repos/Audio4Linux/JDSP4Linux/tags
-            tag-query: first | .name
-            version-query: $tag | sub("^v"; "")
+          type: json
+          url: https://api.github.com/repos/Audio4Linux/JDSP4Linux/tags
+          tag-query: first | .name
+          version-query: $tag | sub("^v"; "")
     post-install:
       - install -Dm644 LICENSE $FLATPAK_DEST/share/licenses/$FLATPAK_ID
       - install -Dm644 meta/flatpak/$FLATPAK_ID.desktop $FLATPAK_DEST/share/applications/$FLATPAK_ID.desktop
